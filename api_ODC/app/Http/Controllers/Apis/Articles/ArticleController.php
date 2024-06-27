@@ -49,6 +49,12 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = $this->articleContract->toGetById( $id );
+            if ( empty( $item ) ) {
+                return $this->sendError( ConstantName::NOT_FOUND_MESSAGE );
+            }
+            $article = $this->articleContract->toDelete( $item->id );
+
+            return $this->sendSuccess( ConstantName::DELETE_SUCCESS_MESSAGE );
     }
 }

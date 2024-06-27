@@ -26,34 +26,22 @@ class ArticleController extends Controller
     public function store(ArticleStoreRequest $request)
     {
         $inputs = $request->all();
-        $this->articleContract->toAdd($inputs);
-        return redirect()->route('articles.store')->with([
-            'success' => true,
-            'message' => ConstantName::STORE_SUCCESS_MESSAGE,
-        ]);
+        $articles=$this->articleContract->toAdd($inputs);
+        return $this->sendResponse($articles, ConstantName::STORE_SUCCESS_MESSAGE);
 
-    }    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $input = $request->all();
+        $article = $this->articleContract->toUpdate( $input, $id );
+
+        return $this->sendResponse( $article, ConstantName::UPDATE_SUCCESS_MESSAGE );
+
     }
 
     /**

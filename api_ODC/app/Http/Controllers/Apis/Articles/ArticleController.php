@@ -23,6 +23,7 @@ class ArticleController extends Controller
         $articles=$this->articleContract->toGetAll();
         return $this->sendResponse($articles, ConstantName::RETRIEVE_DATA_SUCCESS_MESSAGE);
     }
+    
     public function store(ArticleStoreRequest $request)
     {
         $inputs = $request->all();

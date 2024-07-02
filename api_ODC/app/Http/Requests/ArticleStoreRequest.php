@@ -29,9 +29,16 @@ class ArticleStoreRequest extends FormRequest
     }
     public function messages(){
         return[
-            'title.required'=>'le titre est requis',
-            'auteur.required'=>" l'auteur requis",
-            'content.required'=>'image requise',
+            'title.required'=>'Le titre est requis',
+            'title.string'=>'Le titre doit etre en lettre',
+            'title.max'=>'Le titre  e doit pas depasser 258 caracteres ',
+
+            'auteur.required'=>"L'auteur est obligatoire",
+            'auteur.string'=>" L'auteur doit en tre en lettre",
+
+            'content.required'=> "Le contenu est obligatoire",
+            'content.string'=>"Le dooit etre en caracteres "
+
         ];
     }
 }

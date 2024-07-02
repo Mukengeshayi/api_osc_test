@@ -18,10 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Route::prefix('/api')->group(function () {
-//     Route::get('/articles',[ArticleController::class, 'index'])->name('articles.index');
-//     // Route::post('/article',[::class, 'create'])->name('articles.create');
-//     // Route::delete('/article',[::class, 'delete'])->name('articles.create');
-//     // Route::('/article',[::class, 'create'])->name('articles.create');
 
-// });
+Route::resource('/articles',ArticleController::class);

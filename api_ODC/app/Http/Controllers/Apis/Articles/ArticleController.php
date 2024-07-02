@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Apis\Articles;
 
+use App\Http\Controllers\Apis\AppBaseController;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Controllers\Controller;
 use App\Repository\Article\ArticleContract;
@@ -21,14 +22,14 @@ class ArticleController extends Controller
     public function index()
     {
         $articles=$this->articleContract->toGetAll();
-        return $this->sendResponse($articles, ConstantName::RETRIEVE_DATA_SUCCESS_MESSAGE);
+        return AppBaseController::sendResponse($articles, ConstantName::RETRIEVE_DATA_SUCCESS_MESSAGE);
     }
-    
+
     public function store(ArticleStoreRequest $request)
     {
         $inputs = $request->all();
         $articles=$this->articleContract->toAdd($inputs);
-        return $this->sendResponse($articles, ConstantName::STORE_SUCCESS_MESSAGE);
+        return AppBaseController::sendResponse($articles, ConstantName::STORE_SUCCESS_MESSAGE);
 
     }
 
